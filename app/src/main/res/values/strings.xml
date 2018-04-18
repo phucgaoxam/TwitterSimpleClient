@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DemoTwitterClientWithFragment</string>
+
+
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">H5xjkrZhGBAJRvPQVF1PGltam</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">MgPIJy9hwnY3gY01GM0XF7x5UHSCxH9w4MyymYaBIYNRhzoadR</string>
+</resources>

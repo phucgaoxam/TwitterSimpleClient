@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="sts.phucchau.twittersimpleclient.model.TwitterUser" />
+    </data>
+
+    <com.otaliastudios.nestedscrollcoordinatorlayout.NestedScrollCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@+id/tv_following_count">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp">
+
+                    <ImageView
+                        android:id="@+id/im_profile"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:profileSrc="@{user.photoUrl}"
+                        tool:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="@{user.name}"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/im_profile"
+                        tool:text="name" />
+
+                    <TextView
+                        android:id="@+id/tv_screen_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                        app:screenName="@{user.screenName}"
+                        tool:text="name" />
+
+                    <ImageView
+                        android:id="@+id/im_location"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="4dp"
+                        android:src="@drawable/location"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_screen_name" />
+
+                    <TextView
+                        android:id="@+id/tv_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="4dp"
+                        android:gravity="center"
+                        android:text="@{user.location}"
+                        app:layout_constraintBottom_toBottomOf="@+id/im_location"
+                        app:layout_constraintStart_toEndOf="@+id/im_location"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_screen_name"
+                        app:layout_constraintTop_toTopOf="@+id/im_location"
+                        tool:text="location:" />
+
+                    <TextView
+                        android:id="@+id/tv_following_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(user.following)}"
+                        app:layout_constraintTop_toBottomOf="@+id/im_location"
+                        tool:text="10" />
+
+                    <TextView
+                        android:id="@+id/tv_following"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="4dp"
+                        android:gravity="center"
+                        android:text="following"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_following_count"
+                        app:layout_constraintStart_toEndOf="@+id/tv_following_count"
+                        app:layout_constraintTop_toBottomOf="@+id/im_location"
+                        app:layout_constraintTop_toTopOf="@+id/tv_following_count" />
+
+                    <TextView
+                        android:id="@+id/tv_follower_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(user.followers)}"
+                        app:layout_constraintStart_toEndOf="@id/tv_following"
+                        app:layout_constraintTop_toBottomOf="@+id/im_location"
+                        tool:text="10" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="4dp"
+                        android:gravity="center"
+                        android:text="followers"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_follower_count"
+                        app:layout_constraintStart_toEndOf="@+id/tv_follower_count"
+                        app:layout_constraintTop_toBottomOf="@+id/im_location"
+                        app:layout_constraintTop_toTopOf="@+id/tv_follower_count" />
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tab_layout_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorMain"
+                        app:layout_collapseMode="pin"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_following"
+                        app:tabGravity="fill"
+                        app:tabMaxWidth="0dp"
+                        app:tabMode="fixed" />
+                </android.support.constraint.ConstraintLayout>
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_profile" />
+    </com.otaliastudios.nestedscrollcoordinatorlayout.NestedScrollCoordinatorLayout>
+</layout>
+
