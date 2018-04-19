@@ -1,6 +1,8 @@
 package sts.phucchau.twittersimpleclient.base
 
+import android.content.Context
 import android.graphics.drawable.ScaleDrawable
+import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -25,5 +27,11 @@ open class BaseActivity : AppCompatActivity() {
         bundle.putInt("type", type)
         containerFragment.arguments = bundle
         return containerFragment
+    }
+
+    fun checkConnection(): Boolean {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        return cm.activeNetworkInfo != null
     }
 }

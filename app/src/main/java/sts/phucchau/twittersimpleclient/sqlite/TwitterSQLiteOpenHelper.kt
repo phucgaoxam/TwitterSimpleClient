@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper
 class TwitterSQLiteOpenHelper(context: Context) : SQLiteOpenHelper(context, "twitter", null, 1) {
 
     override fun onCreate(db: SQLiteDatabase?) {
-
+        db!!.execSQL(TableUserTweet.CREATE_TABLE)
+        db.execSQL(TableTimeLineTweet.CREATE_TABLE)
+        db.execSQL(TableUserLikeTweet.CREATE_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

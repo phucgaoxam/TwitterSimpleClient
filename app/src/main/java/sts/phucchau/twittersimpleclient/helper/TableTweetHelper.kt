@@ -21,6 +21,12 @@ class TableTweetHelper(context: Context) {
         }
     }
 
+    init {
+        tableTimeLineTweet = TableTimeLineTweet(context)
+        tableUserLikeTweet = TableUserLikeTweet(context)
+        tableUserTweet = TableUserTweet(context)
+    }
+
     fun insertTimelineTweet(tweet: Tweet) {
         tableTimeLineTweet!!.insertTweet(tweet)
     }

@@ -19,7 +19,7 @@ import sts.phucchau.twittersimpleclient.viewholder.ViewHolderTweet
 class AdapterTweet(private var tweetList: MutableList<Tweet?>, rv: RecyclerView) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
-        val MAX_COUNT_PER_PAGE = 20
+        const val MAX_COUNT_PER_PAGE = 20
 
         fun formatTimeStamp(tv: TextView, createdAt: String?): String {;
             return if (createdAt != null && TweetDateUtils.isValidTimestamp(createdAt)) {
@@ -103,7 +103,7 @@ class AdapterTweet(private var tweetList: MutableList<Tweet?>, rv: RecyclerView)
 
 @BindingAdapter("android:src")
 fun ImageView.setImageSrc(src: String) {
-    Picasso.get()
+    Picasso.with(this.context)
             .load(src)
             .fit()
             .centerCrop()
@@ -124,4 +124,3 @@ fun ImageView.setVisibility(isVerified: Boolean) {
 fun TextView.setScreenText(screenName: String) {
     this.text = "@$screenName"
 }
-

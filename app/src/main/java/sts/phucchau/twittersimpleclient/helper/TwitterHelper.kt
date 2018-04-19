@@ -24,10 +24,10 @@ class TwitterHelper(notifyTwitterLogin: NotifyTwitterLogin) {
     }
 
     init {
-        initTwitterCallbac(notifyTwitterLogin)
+        initTwitterCallback(notifyTwitterLogin)
     }
 
-    private fun initTwitterCallbac(notifyTwitterLogin: NotifyTwitterLogin) {
+    private fun initTwitterCallback(notifyTwitterLogin: NotifyTwitterLogin) {
         twitterCallback = object : Callback<TwitterSession>() {
             override fun success(result: Result<TwitterSession>?) {
                 val twitterSession = result?.data
@@ -44,4 +44,6 @@ class TwitterHelper(notifyTwitterLogin: NotifyTwitterLogin) {
             }
         }
     }
+
+    fun getTwitterCallBack(): Callback<TwitterSession> = twitterCallback!!
 }

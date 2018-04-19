@@ -1,6 +1,7 @@
 package sts.phucchau.twittersimpleclient
 
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.Toolbar
@@ -29,9 +30,10 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         initUI()
+        addControl()
     }
 
-    fun initUI() {
+    private fun initUI() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -43,7 +45,7 @@ class MainActivity : BaseActivity() {
         tabLayout?.setupWithViewPager(viewPager)
     }
 
-    fun setUpViewPager(viewPager: ViewPager) {
+    private fun setUpViewPager(viewPager: ViewPager) {
         adapter = AdapterViewPager(supportFragmentManager)
 
         fragmentTimeline = createContainerFragment(TIMELINE)
@@ -52,6 +54,10 @@ class MainActivity : BaseActivity() {
         adapter?.addFragment(createContainerFragment(PROFILE), "Profile")
 
         viewPager.adapter = adapter
+    }
+
+    private fun addControl() {
+        findViewById<FloatingActionButton>(R.id.fab_post_tweet).setOnClickListener({ (supportFragmentManager.fragments[0] as FragmentContainer).getFragmentTimeLine().postTweet() })
     }
 
     override fun onBackPressed() {
